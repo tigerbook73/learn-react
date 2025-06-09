@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 function ErrorFallback({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) {
@@ -137,12 +137,14 @@ function Task({ task, action }: { task: Task; action: React.Dispatch<TaskAction>
 
 function NewTask({ action }: { action: React.Dispatch<TaskAction> }) {
   const [title, setTitle] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim()) {
       action({ type: "add", title });
       setTitle("");
+      inputRef.current?.focus();
     }
   };
 
@@ -153,7 +155,8 @@ function NewTask({ action }: { action: React.Dispatch<TaskAction> }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="New task title"
-        className="w-85"
+        className="m-1 p-1 w-83 border-1 rounded"
+        ref={inputRef}
       />
       <button type="submit" className="m-1 p-1 border-1 rounded">
         Add Task
