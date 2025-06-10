@@ -1,23 +1,23 @@
-import { ThemeContext } from "./ThemeContext";
-import { useState } from "react";
+import { useTheme } from "./ThemeContext";
+import ThemeProvider from "./ThemeProvider";
 
-export default function ContextExample() {
-  // Theme control
-  const [theme, setTheme] = useState("light");
-  const updateTheme = (newTheme: string = "undefined") => {
-    if (newTheme === "undefined") {
-      setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-    } else {
-      setTheme(newTheme);
-    }
-  };
+function ContextConsumer() {
+  const { theme, setTheme } = useTheme();
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: updateTheme }}>
-      <div className={theme === "dark" ? "bg-black text-white" : "bg-white text-black"}>
-        <h1>Current Theme: {theme}</h1>
-        <button onClick={() => updateTheme()}>Toggle Theme</button>
-      </div>
-    </ThemeContext.Provider>
+    <div className={theme === "dark" ? "bg-black text-white" : "bg-white text-black"}>
+      <div>Current Theme: {theme}</div>
+      <button className="border-1 rounded text-black bg-blue-100 hover:bg-blue-400" onClick={() => setTheme("none")}>
+        Toggle Theme
+      </button>
+    </div>
+  );
+}
+
+export default function ContextExample() {
+  return (
+    <ThemeProvider>
+      <ContextConsumer />
+    </ThemeProvider>
   );
 }
