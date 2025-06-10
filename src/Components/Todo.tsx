@@ -158,7 +158,7 @@ function NewTask({ action }: { action: React.Dispatch<TaskAction> }) {
         className="m-1 p-1 w-83 border-1 rounded"
         ref={inputRef}
       />
-      <button type="submit" className="m-1 p-1 border-1 rounded">
+      <button type="submit" className="m-1 p-1 border-1 rounded hover:bg-blue-500 hover:text-white">
         Add Task
       </button>
     </form>
