@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useReducer, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -6,7 +7,7 @@ function ErrorFallback({ error, resetErrorBoundary }: { error: Error; resetError
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
+      <Button onClick={resetErrorBoundary}>Try again</Button>
     </div>
   );
 }
@@ -110,26 +111,26 @@ function Task({ task, action }: { task: Task; action: React.Dispatch<TaskAction>
       ) : (
         <>
           <span className="m-1 p-1 inline-block w-80 ">{task.title}</span>
-          <button className="m-1 p-1 border-1 rounded" onClick={handleEdit}>
+          <Button variant="contained" onClick={handleEdit}>
             Edit
-          </button>
+          </Button>
         </>
       )}
 
       {!isEditing && (
-        <button className="m-1 p-1 border-1 rounded" onClick={handleDelete}>
+        <Button variant="contained" onClick={handleDelete}>
           Delete
-        </button>
+        </Button>
       )}
       {isEditing && (
-        <button className="m-1 p-1 border-1 rounded" onClick={handleSave}>
+        <Button variant="contained" onClick={handleSave}>
           Save
-        </button>
+        </Button>
       )}
       {isEditing && (
-        <button className="m-1 p-1 border-1 rounded" onClick={handleCancel}>
+        <Button variant="contained" onClick={handleCancel}>
           Cancel
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -158,9 +159,9 @@ function NewTask({ action }: { action: React.Dispatch<TaskAction> }) {
         className="m-1 p-1 w-83 border-1 rounded"
         ref={inputRef}
       />
-      <button type="submit" className="m-1 p-1 border-1 rounded hover:bg-blue-500 hover:text-white">
+      <Button variant="contained" type="submit">
         Add Task
-      </button>
+      </Button>
     </form>
   );
 }
