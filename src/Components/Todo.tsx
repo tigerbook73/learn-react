@@ -1,4 +1,7 @@
-import { Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { red } from "@mui/material/colors";
 import { useReducer, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -60,13 +63,13 @@ function TaskList() {
   const [tasks, dispatch] = useReducer(taskReducer, []);
 
   return (
-    <div className="p-4 border rounded shadow-lg">
-      <h2>Task List</h2>
+    <Box className="p-4 border rounded shadow-lg">
+      <Typography sx={{ color: red[200] }}>Task List</Typography>
       {tasks.map((task) => (
         <Task key={task.id} task={task} action={dispatch} />
       ))}
       <NewTask action={dispatch} />
-    </div>
+    </Box>
   );
 }
 

@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { Comment, NewLabelOutlined } from "@mui/icons-material";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Comment from "@mui/icons-material/Comment";
+import NewLabelOutlined from "@mui/icons-material/NewLabelOutlined";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
